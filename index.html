@@ -1,1 +1,592 @@
 <P> hello world </P>
+`cropdoc.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropDoc - Smart Agricultural Diagnostics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #16a34a;
+            --secondary: #15803d;
+            --accent: #22c55e;
+            --dark: #14532d;
+            --light: #f0fdf4;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.8) 0%, rgba(101, 163, 13, 0.8) 100%);
+        }
+        
+        .leaf-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse-animate {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .scan-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scan-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+            animation: scan 4s linear infinite;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(400px); }
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .diagnostic-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0%, var(--accent) 100%);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.5);
+        }
+        
+        .leaf-bg {
+            background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/659e18a9-958c-4aba-b239-fda204870d81.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Header -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-leaf text-3xl text-green-600 leaf-animation"></i>
+                <span class="text-2xl font-bold text-green-700">CropDoc</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-green-700 hover:text-green-500 font-medium transition">Home</a>
+                <a href="#" class="text-gray-600 hover:text-green-500 font-medium transition">Features</a>
+                <a href="#" class="text-gray-600 hover:text-green-500 font-medium transition">Diagnosis</a>
+                <a href="#" class="text-gray-600 hover:text-green-500 font-medium transition">Solutions</a>
+                <a href="#" class="text-gray-600 hover:text-green-500 font-medium transition">About</a>
+            </div>
+            <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105">
+                Get Started
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Parallax -->
+    <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 hero-gradient text-white parallax">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-5xl font-bold leading-tight">
+                    Smart <span class="text-yellow-200">Agricultural</span> Diagnostics
+                </h1>
+                <p class="text-xl opacity-90">
+                    Revolutionizing crop health analysis with AI-powered solutions. Identify plant diseases, nutrient deficiencies, and pest problems in seconds.
+                </p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                        Try Live Demo
+                    </button>
+                    <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2355e8c1-c64c-402f-82d4-d1a4805a7681.png" alt="Smartphone scanning a green leaf with AI analysis overlay showing plant health metrics" class="rounded-xl shadow-2xl border-4 border-white scan-animation" />
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <div class="diagnostic-circle flex items-center justify-center">
+                        <div class="w-[130px] h-[130px] bg-white rounded-full flex items-center justify-center text-green-600 font-bold">
+                            98%
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -top-6 -right-6 bg-white p-3 rounded-full shadow-lg">
+                    <i class="fas fa-seedling text-3xl text-green-600"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating leaves animation -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <i class="fas fa-leaf text-green-200 opacity-30 absolute top-20 left-10 text-4xl leaf-animation" style="animation-delay: 0.5s;"></i>
+            <i class="fas fa-leaf text-green-200 opacity-30 absolute top-1/4 right-20 text-5xl leaf-animation" style="animation-delay: 1s;"></i>
+            <i class="fas fa-leaf text-green-200 opacity-30 absolute bottom-1/3 left-1/4 text-3xl leaf-animation" style="animation-delay: 1.5s;"></i>
+            <i class="fas fa-leaf text-green-200 opacity-30 absolute bottom-20 right-1/3 text-6xl leaf-animation" style="animation-delay: 2s;"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 rounded-lg bg-green-50 transition-all hover:bg-green-100">
+                    <div class="text-5xl font-bold text-green-600 mb-3">15K+</div>
+                    <div class="text-gray-600">Successful Scans</div>
+                </div>
+                <div class="p-6 rounded-lg bg-green-50 transition-all hover:bg-green-100">
+                    <div class="text-5xl font-bold text-green-600 mb-3">95%</div>
+                    <div class="text-gray-600">Accuracy Rate</div>
+                </div>
+                <div class="p-6 rounded-lg bg-green-50 transition-all hover:bg-green-100">
+                    <div class="text-5xl font-bold text-green-600 mb-3">500+</div>
+                    <div class="text-gray-600">Plant Varieties</div>
+                </div>
+                <div class="p-6 rounded-lg bg-green-50 transition-all hover:bg-green-100">
+                    <div class="text-5xl font-bold text-green-600 mb-3">24/7</div>
+                    <div class="text-gray-600">Diagnostic Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Advanced Crop <span class="text-green-600">Diagnostics</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our AI-powered platform provides comprehensive analysis and actionable insights for your crops.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border-b-4 border-green-500">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-camera text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Image Recognition</h3>
+                    <p class="text-gray-600 mb-4">Simply take a photo of your plant and our AI will instantly analyze it for diseases and deficiencies.</p>
+                    <a href="#" class="text-green-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border-b-4 border-green-500">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Soil Analysis</h3>
+                    <p class="text-gray-600 mb-4">Get detailed soil health reports and personalized recommendations for improvement.</p>
+                    <a href="#" class="text-green-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border-b-4 border-green-500">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">AI Assistant</h3>
+                    <p class="text-gray-600 mb-4">Get personalized advice and treatment plans tailored to your specific crops and conditions.</p>
+                    <a href="#" class="text-green-600 font-medium flex items-center">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Scanner Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Try Our <span class="text-green-600">Interactive</span> Scanner</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Experience the power of CropDoc by uploading an image of your plant below. Our AI will analyze it in real-time.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-upload text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Upload Image</h4>
+                                <p class="text-gray-600 text-sm">Select a clear photo of your plant's leaves</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-brain text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">AI Analysis</h4>
+                                <p class="text-gray-600 text-sm">Our neural networks will scan for issues</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-file-prescription text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Get Results</h4>
+                                <p class="text-gray-600 text-sm">Receive detailed diagnosis and solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-8 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 flex items-center space-x-2">
+                        <span>Upload Plant Image</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-green-100 rounded-2xl p-8 shadow-lg border-2 border-green-200">
+                        <div class="h-64 bg-white rounded-lg flex items-center justify-center mb-6 border-2 border-dashed border-green-300">
+                            <div class="text-center">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-3"></i>
+                                <p class="text-gray-500">Upload plant image here</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-700">Image Quality</span>
+                                <span class="font-bold text-green-600">Good</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full w-3/4"></div>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-700">Leaf Coverage</span>
+                                <span class="font-bold text-green-600">Sufficient</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full w-2/3"></div>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-700">Detection Ready</span>
+                                <span class="font-bold text-green-600 pulse-animate">Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-green-600 rounded-full opacity-10"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-green-600 rounded-full opacity-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animation Showcase -->
+    <section class="py-20 bg-gray-50 leaf-bg parallax relative">
+        <div class="absolute inset-0 bg-gray-900/60"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 text-white">
+                <h2 class="text-4xl font-bold mb-4">See Our <span class="text-green-300">Technology</span> in Action</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">Watch how CropDoc analyzes plant health issues and provides actionable solutions.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6aa4d53c-4bb4-4d68-8dda-bb927834f491.png" alt="Animated demonstration of CropDoc scanning process showing AI overlays, diagnosis results, and treatment recommendations" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-6 bg-green-600 text-white flex items-center justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold">CropDoc Diagnostic Process</h3>
+                        <p class="opacity-90">See our AI at work</p>
+                    </div>
+                    <button class="bg-white text-green-600 hover:bg-gray-100 px-6 py-2 rounded-full font-medium flex items-center space-x-2">
+                        <i class="fas fa-play"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">What Farmers <span class="text-green-600">Say</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Trusted by agricultural professionals worldwide</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl relative">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-green-600"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"CropDoc identified a fungal infection in my tomatoes weeks before I noticed symptoms. Their recommended treatment saved my entire crop."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c956c8a-eaf0-48b0-8d11-ceacbd59e14b.png" alt="Portrait of middle-aged male farmer wearing a hat and smiling" class="w-12 h-12 rounded-full object-cover" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">John Peterson</h4>
+                            <p class="text-gray-600 text-sm">Organic Farmer, California</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl relative">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-green-600"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"The soil analysis feature helped me optimize fertilizer use, saving me thousands of dollars in unnecessary inputs this season."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86fccb18-b87b-4ba2-80de-282af65f7b25.png" alt="Serious-looking female agricultural scientist holding a clipboard in a wheat field" class="w-12 h-12 rounded-full object-cover" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">Maria Gonzalez</h4>
+                            <p class="text-gray-600 text-sm">Agronomist, Texas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl relative">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-quote-left text-green-600"></i>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex space-x-1 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"As a small-scale farmer, CropDoc gives me access to expert-level diagnostics I couldn't otherwise afford. Game changer for my operation."</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/06785d41-b66d-4378-82f0-d55887764092.png" alt="Elderly male farmer smiling proudly next to his vegetable garden" class="w-12 h-12 rounded-full object-cover" />
+                        <div>
+                            <h4 class="font-bold text-gray-800">Samuel Wilson</h4>
+                            <p class="text-gray-600 text-sm">Family Farm, Iowa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Revolutionize Your <span class="text-yellow-200">Farm Health</span>?</h2>
+            <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">Join thousands of farmers and agricultural professionals who trust CropDoc for accurate, fast plant diagnostics.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105">
+                    Start Free Trial
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105">
+                    Book a Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-leaf text-3xl text-green-400"></i>
+                        <span class="text-2xl font-bold">CropDoc</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Advanced agricultural diagnostics powered by artificial intelligence.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Solutions</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Plant Disease ID</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Nutrient Deficiency</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pest Detection</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Soil Health</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Treatment Plans</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Research</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">API Docs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 CropDoc. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8">
+        <button class="w-14 h-14 bg-green-600 hover:bg-green-700 rounded-full shadow-lg flex items-center justify-center text-white text-xl transition-all transform hover:scale-110">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.feature-card, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Simulate scanning animation
+        function simulateScan() {
+            const scanner = document.querySelector('.scan-animation');
+            scanner.classList.add('scanning');
+            setTimeout(() => {
+                scanner.classList.remove('scanning');
+                setTimeout(simulateScan, 2000);
+            }, 4000);
+        }
+
+        // Start scan simulation
+        setTimeout(simulateScan, 1000);
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Floating action button click
+            const fab = document.querySelector('.fixed button');
+            fab.addEventListener('click', () => {
+                alert('Chat with our agricultural experts now!');
+            });
+
+            // Make stats count up
+            const stats = document.querySelectorAll('.stats div');
+            stats.forEach(stat => {
+                const target = +stat.getAttribute('data-target');
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    stat.textContent = Math.floor(current);
+                    
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 20);
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
+
